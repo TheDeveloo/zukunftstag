@@ -24,11 +24,44 @@
   <script>
     const rabbit = document.getElementById("rabbit");
     rabbit.addEventListener("click", teleport);
+    
+    const offsetHeight = window.innerHeight - rabbit.height;
+    const offsetWidth = window.innerWidth - rabbit.width;
+    
     function teleport() {
-      const offsetHeight = window.innerHeight - rabbit.height;
-      const offsetWidth = window.innerWidth - rabbit.width;
       rabbit.style.top = Math.round(Math.random() * offsetHeight) + 'px';
       rabbit.style.left = Math.round(Math.random() * offsetWidth) + 'px';
+    }
+
+    var i = 0;
+    var jumpHeight = 30;
+    var directionTop = true;
+    var directionRight = true;
+    function jump() {
+      setTimeout((element) => {
+        i++;
+
+        // starting x point must be greater than 0 to see the jump
+        const top = isNaN(parseInt(element.style.top)) ? 100 : parseInt(element.style.top);
+        if(i % jumpHeight === 0) {
+          directionTop = !directionTop;
+        }
+        element.style.top = top + (directionTop ? -1 : 1) + 'px';
+
+        // starting y point must be greater than 0
+        const left = isNaN(parseInt(element.style.left)) ? 1 : parseInt(element.style.left);
+        if(left % offsetWidth === 0) {
+          directionRight = !directionRight;
+        }
+        element.style.left = left + (directionRight ? 1 : -1) + 'px';
+        
+        // stop condition
+        if(i % (jumpHeight*2) !== 0) {
+          jump();
+        } else {
+          i = 0;
+        }
+      },10, rabbit);
     }
   </script>
 </body>
