@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>rabbit / Kaninchen</title>
+</head>
+<body>
+  <style>
+    #rabbit {
+      width: 300px;
+      position: absolute;
+    }
+
+    body {
+      cursor: grab;
+    }
+    body:active {
+      cursor: grabbing;
+    }
+  </style>
+
+  <img id="rabbit" src="images/lapin.jpeg" alt="rabbit"/>
+  
+  <script>
+    var rabbit = document.getElementById("rabbit");
+    rabbit.addEventListener("click", teleport);
+    function teleport() {
+      const offsetHeight = window.innerHeight - rabbit.height;
+      const offsetWidth = window.innerWidth - rabbit.width;
+      rabbit.style.top = Math.round(Math.random() * offsetHeight) + 'px';
+      rabbit.style.left = Math.round(Math.random() * offsetWidth) + 'px';
+    }
+  </script>
+</body>
+</html>
