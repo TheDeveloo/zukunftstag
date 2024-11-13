@@ -1,0 +1,23 @@
+<html>
+<body>
+
+<div style="color: blue">Bonjour !</div>
+<div style="color: green">tout le monde</div>
+
+<img src="images/lapin.jpeg" width="300px" style="margin: 30px; border: 10px dotted grey"></img>
+
+<form onsubmit="alerter(event)">
+    <label>Quel est ton nom ?</label>
+    <input id="nom" type="text"/>
+    <button type="submit">CLICK</button>
+</form>
+
+<script>
+    function alerter(event) {
+        const valeur = document.getElementById('nom').value;
+        alert("Salut " + valeur + " !");
+    }
+</script>
+
+</body>
+</html>
