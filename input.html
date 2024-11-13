@@ -1,21 +1,43 @@
 <html>
 <body>
+<style>
+    .french {
+        display: block;
+    }
+    .german {
+        display: none;
+    }
+</style>
 
-<div style="color: blue">Bonjour !</div>
-<div style="color: green">tout le monde</div>
+<div class="french">
+    <div style="color: blue">Bonjour !</div>
+    <div style="color: green">tout le monde</div>
 
-<img src="images/lapin.jpeg" width="300px" style="margin: 30px; border: 10px dotted grey"></img>
+    <img src="images/lapin.jpeg" width="300px" style="margin: 30px; border: 10px dotted grey" alt="lapin"/>
 
-<form onsubmit="alerter(event)">
-    <label>Quel est ton nom ?</label>
-    <input id="nom" type="text"/>
-    <button type="submit">CLICK</button>
-</form>
+    <form onsubmit="alerter('Salut ', 'nom', event)">
+        <label for="nom">Quel est ton nom ?</label>
+        <input id="nom" type="text"/>
+        <button type="submit">ENVOYER</button>
+    </form>
+</div>
+<div class="german">
+    <div style="color: blue">Hallo </div>
+    <div style="color: green">zusammen!</div>
+
+    <img src="images/lapin.jpeg" width="300px" style="margin: 30px; border: 10px dotted grey" alt="kaninchen"/>
+
+    <form onsubmit="alerter('Hallo ', 'name', event)">
+        <label for="name">Wie ist dein Name?</label>
+        <input id="name" type="text"/>
+        <button type="submit">SENDEN</button>
+    </form>
+</div>
 
 <script>
-    function alerter(event) {
-        const valeur = document.getElementById('nom').value;
-        alert("Salut " + valeur + " !");
+    function alerter(greeting, input, event) {
+        const name = document.getElementById(input).value;
+        alert(greeting + name + " !");
     }
 </script>
 
